@@ -54,4 +54,6 @@ You should now see the very first Strava custom **connector-visualization-report
 ### Stop! Not Done!!
 
 Click on the "SVG" button at the bottom of 2019, download the SVG image (you must use Chrome as a browser) and 
-[post your viz into this Twitter thread, so I know it is working](https://twitter.com/ralph_spandl/status/1198319219064082432): 🚀🚀🚀
+[post your viz into this Twitter thread, so I know it is working](https://twitter.com/ralph_spandl/status/1199747414757924864): 🚀🚀🚀
+
+
