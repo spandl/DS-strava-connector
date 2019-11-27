@@ -1,1 +1,1 @@
-# Instructions
+## How to setup the beta version of the Data Studio Strava Connector
