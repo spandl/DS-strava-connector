@@ -1,0 +1,25 @@
+{
+  "timeZone": "America/New_York",
+  "dependencies": {
+    "libraries": [{
+      "userSymbol": "OAuth2",
+      "libraryId": "1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF",
+      "version": "35",
+      "developmentMode": true
+    }]
+  },
+  "oauthScopes": ["https://www.googleapis.com/auth/script.external_request"],
+  "dataStudio": {
+    "name": "Strava Activities BETA 1",
+    "logoUrl": "https://user-images.githubusercontent.com/5740594/69738570-59a8d680-1104-11ea-8cc9-27e5bfc50d34.png",
+    "company": "Ralph Spandl — r42",
+    "companyUrl": "https://r42.ca",
+    "addonUrl": "https://spandl.github.io/DS-strava-connector/",
+    "supportUrl": "https://github.com/spandl/DS-strava-connector/issues",
+    "description": "BETA version - Get strava activity data.",
+    "sources": ["STRAVA"],
+    "templates": {
+      "default": "4180f594-81ed-477f-9347-1d63beca06ba"
+    }
+  }
+}
