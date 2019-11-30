@@ -10,7 +10,7 @@
   },
   "oauthScopes": ["https://www.googleapis.com/auth/script.external_request"],
   "dataStudio": {
-    "name": "Strava Activities BETA 1",
+    "name": "Strava Activities BETA 2",
     "logoUrl": "https://user-images.githubusercontent.com/5740594/69738570-59a8d680-1104-11ea-8cc9-27e5bfc50d34.png",
     "company": "Ralph Spandl — r42",
     "companyUrl": "https://r42.ca",
