@@ -73,10 +73,6 @@ commute
 * pr_count
 * total_photo_count
 * calories
-
-## Questionable
-* workout_type
-* trainer
 * commute
 * manual
 

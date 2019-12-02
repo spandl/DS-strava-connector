@@ -2,8 +2,6 @@ var SERVICE_NAME = 'strava'
 var AUTHORIZATION_BASE_URL = 'https://www.strava.com/oauth/authorize'
 var TOKEN_URL = 'https://www.strava.com/oauth/token'
 var CALLBACK_FUNCTION_NAME = 'authCallback'
-
-// r42 - Adding Scope
 var STRAVA_API_SCOPE = 'activity:read_all'
 
 /** Returns a parameterized OAuth2 Service object. */
@@ -12,29 +10,27 @@ function getOAuthService() {
     var clientId = scriptProps.getProperty('OAUTH_CLIENT_ID')
     var clientSecret = scriptProps.getProperty('OAUTH_CLIENT_SECRET')
 
-    return (
-        OAuth2.createService(SERVICE_NAME)
-            .setAuthorizationBaseUrl(AUTHORIZATION_BASE_URL)
-            .setTokenUrl(TOKEN_URL)
-            .setClientId(clientId)
-            .setClientSecret(clientSecret)
-            .setGrantType('offline')
-            .setPropertyStore(PropertiesService.getUserProperties())
-            .setScope(STRAVA_API_SCOPE)
-            .setCallbackFunction(CALLBACK_FUNCTION_NAME)
-            // r42 - Forces the approval prompt every time. This is useful for testing,
-            // Remove for production
-            .setParam('approval_prompt', 'force')
-    )
+    return OAuth2.createService(SERVICE_NAME)
+        .setAuthorizationBaseUrl(AUTHORIZATION_BASE_URL)
+        .setTokenUrl(TOKEN_URL)
+        .setClientId(clientId)
+        .setClientSecret(clientSecret)
+        .setGrantType('offline')
+        .setPropertyStore(PropertiesService.getUserProperties())
+        .setScope(STRAVA_API_SCOPE)
+        .setCallbackFunction(CALLBACK_FUNCTION_NAME)
 }
 
 /** The callback that is invoked after an authentication attempt. */
 function authCallback(request) {
     var authorized = getOAuthService().handleCallback(request)
+    // close window automatically
+    var autoclose =
+        '(Tab should automatically close.) <script>setTimeout(function() { top.window.close() }, 1);</script>'
     if (authorized) {
-        return HtmlService.createHtmlOutput('Success! You can close this tab.')
+        return HtmlService.createHtmlOutput('Success!' + autoclose)
     } else {
-        return HtmlService.createHtmlOutput('Denied. You can close this tab')
+        return HtmlService.createHtmlOutput('Denied.' + autoclose)
     }
 }
 

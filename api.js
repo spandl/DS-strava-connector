@@ -1,5 +1,6 @@
 var RESULTS_PER_PAGE = 200
 var STRAVA_BASE_URL = 'https://www.strava.com/api/v3'
+var version = '1.0'
 
 function getAuthType() {
     return {
@@ -8,47 +9,13 @@ function getAuthType() {
 }
 
 function isAdminUser() {
-    return true
-}
-
-function hello() {
-    var world = 'Germany'
-    Logger.log('Hello, ' + world)
+    var isAdmin = Boolean(scriptProps.getProperty('isAdminUser'))
+    return isAdmin
 }
 
 function getConfig(request) {
     var cc = DataStudioApp.createCommunityConnector()
     var config = cc.getConfig()
-
-    // Metric fileds
-    config
-        .newCheckbox()
-        .setId('metric')
-        .setName('Add fields with metric units')
-        .setHelpText(
-            'Will add multiple fields with metric units: distance, max speed, average speed and temperature.'
-        )
-        .setAllowOverride(true)
-
-    // Imperial fields
-    config
-        .newCheckbox()
-        .setId('imperial')
-        .setName('Add fields with imperial units')
-        .setHelpText(
-            'Will add multiple fields with imperial units: distance, max speed, average speed, total elevation gain and temperature.'
-        )
-        .setAllowOverride(true)
-
-    // Pace
-    config
-        .newCheckbox()
-        .setId('pace')
-        .setName('Add fields for pace')
-        .setHelpText(
-            'Will add fields "max speed" and "average speed" expressed as pace.'
-        )
-        .setAllowOverride(true)
 
     config.setDateRangeRequired(true)
 
@@ -56,13 +23,7 @@ function getConfig(request) {
 }
 
 function getSchema(request) {
-    Logger.log('getSchema. print request')
-    Logger.log(request)
     var fields = getFields(request).build()
-
-    Logger.log('getSchema. log fields')
-    Logger.log(fields)
-
     return { schema: fields }
 }
 
@@ -145,19 +106,13 @@ function formatQueryParams(queryParams) {
 }
 
 function urlFetchOptions() {
-    // r42 - Changed get Access by getOAuthToken
-    Logger.log(ScriptApp.getOAuthToken())
-
     var token = getOAuthService().getAccessToken()
 
     return {
         headers: {
             Authorization: 'Bearer ' + token
-            // 'c3a981894d7ded697cec5620a7b21a179b375d1c'
-            // ScriptApp.getOAuthToken()
         }
-        //,
-        //muteHttpExceptions: true
+        //, muteHttpExceptions: true
     }
 }
 
@@ -179,14 +134,9 @@ function hashString(str) {
  * the average request.
  */
 function getAllDataFromAPI(request, requestedFields) {
-    Logger.log('getAllDataFromAPI')
     var configParams = request.configParams || {}
     var cache = CacheService.getUserCache()
     var queryParams = {}
-
-    Logger.log('call getFileds() again')
-    Logger.log(request)
-    Logger.log(requestedFields)
 
     var keysToKeep = getFields(request)
         .asArray()
@@ -263,8 +213,6 @@ function getAllDataFromAPI(request, requestedFields) {
 }
 
 function getData(request) {
-    Logger.log('getData')
-
     var requestedFields = getFields(request).forIds(
         request.fields.map(function(field) {
             return field.name
