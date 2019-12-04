@@ -35,11 +35,20 @@
         display: flex;
         flex-direction: row;
 
+        @media (max-width: 700px) {
+            flex-direction: column;
+        }
+
         .content {
             counter-increment: stepper;
             width: 55%;
             text-align: center;
             padding: 0 30px 0;
+
+            @media (max-width: 700px) {
+                width: 100%;
+                padding: 0;
+            }
 
             &::before {
                 content: counter(stepper);
@@ -60,6 +69,10 @@
 
         .image {
             width: 45%;
+            @media (max-width: 700px) {
+                width: 100%;
+                margin-top: 25px;
+            }
             max-width: 400px;
             img {
                 width: 100%;
@@ -69,6 +82,11 @@
         .done {
             width: 55%;
             padding: 0 0 0 40px;
+
+            @media (max-width: 700px) {
+                width: 100%;
+                padding: 0;
+            }
             
             &::before {
                 content: "";
@@ -90,6 +108,11 @@
             width: 45%;
             text-align: center;
             padding: 0 20px;
+
+            @media (max-width: 700px) {
+                width: 100%;
+                padding: 0;
+            }
         }
     }
 }

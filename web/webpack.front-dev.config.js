@@ -88,6 +88,7 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, './src'),
         watchContentBase: true,
+        host: '192.168.58.88',
         compress: true,
         port: 8080,
         overlay: true,

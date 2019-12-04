@@ -1,16 +1,20 @@
 .showbox {
     height: 750px;
+    max-height: 100vh;
     background-image: url('/assets/images/showbox-bg.svg');
     background-image: url('/assets/images/showbox-bg.svg'), linear-gradient(180deg, #495E64 0%, #1C2D30 100%); 
-    // linear-gradient(180deg, #495E64 0%, #1C2D30 100%)
     background-position: center top;
     background-repeat: no-repeat;
-    // background-color: ;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
 
     .content {
-        position: absolute;
-        top: 450px;
-        margin: 0 auto;
+        // position: absolute;
+        // bottom: 20px;
+        margin: 0 auto 70px;
         width: 100%;
         h1 {            
             text-align: center;
@@ -18,7 +22,7 @@
 
         .r42 {
             text-align: center;
-            margin-bottom: 75px;
+            margin-bottom: 50px;
             img {
                 width: 70px;
             }
