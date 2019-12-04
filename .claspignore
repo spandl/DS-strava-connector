@@ -1,0 +1,8 @@
+**/web/**
+**/node_modules/**
+node_modules/**
+.git/**
+web/**
+/web/**
+docs/**
+/docs/**

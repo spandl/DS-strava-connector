@@ -10,16 +10,24 @@
   },
   "oauthScopes": ["https://www.googleapis.com/auth/script.external_request"],
   "dataStudio": {
-    "name": "Strava Activity Explorer",
-    "logoUrl": "https://user-images.githubusercontent.com/5740594/69738570-59a8d680-1104-11ea-8cc9-27e5bfc50d34.png",
+    "name": "Strava Explorer",
     "company": "Ralph Spandl — r42",
     "companyUrl": "https://r42.ca",
-    "addonUrl": "https://spandl.github.io/DS-strava-connector/",
+    "logoUrl": "https://strava-explorer.r42.ca/assets/images/Strava-logo-icon.png",
+    "addonUrl": "https://strava-explorer.r42.ca/",
     "supportUrl": "https://github.com/spandl/DS-strava-connector/issues",
-    "description": "Get basic strava activity data",
+    "description": "Connect your personal Strava activity data to Data Studio and get more insight about your activities.",
+    "shortDescription": "Use your personal Strava activity data in Data Studio",
+    "privacyPolicyUrl": "https://r42.ca/Data-Studio-Privacy-Policy",
+    "authType": ["OAUTH2"],
+    "feeType": ["FREE"],
     "sources": ["STRAVA"],
     "templates": {
       "default": "4dcec71d-af60-4dc8-8b63-e299b0d411f8"
     }
-  }
+  },
+  "urlFetchWhitelist": [
+    "https://www.strava.com/api/v3",
+    "https://www.strava.com/oauth"
+  ]
 }
