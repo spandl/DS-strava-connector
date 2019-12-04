@@ -1,0 +1,101 @@
+@use "foundation/variables" as *;
+
+footer {
+    font-family: 'Nunito', sans-serif;
+    background-color: $footerBack;
+    box-shadow: -4px 0 8px 0px rgba(0, 0, 0, 0.5);
+    color: white;
+    margin: 0;
+    padding: 2px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 20;
+
+    @media (max-width: 700px) {
+        font-size: 0.9em;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        > * {
+            width: 100%;
+        }
+
+        .links {
+            margin: 0;
+            padding:0;
+        }
+    }
+
+    .copyright {
+        margin: 5px 25px;
+        font-size: 0.7em;
+        @media (max-width: 700px) {
+            text-align: center;
+        }
+    }
+
+    .social {
+        width: 120px;
+        img {
+            width: 40px;
+            margin: 8px 6px;
+            transition: 0.5s;
+            opacity: 0.8;
+        }
+        a:hover {
+            img {
+                width: 54px;
+                transition: 0.75s;
+                opacity: 1;
+            }
+        }
+        @media (max-width: 700px) {
+            text-align: center;
+            img {
+                width: 40px;
+            }
+            a:hover {
+                img {
+                    width: 40px;
+                }
+            }
+        }
+    }
+
+    ul.links {
+        text-align: left;
+        margin: 10px 100px 10px 0;
+        font-size: 0.975em;
+        line-height: 18px;
+
+        li {
+            display: block;
+            padding: 5px 0;
+            a {
+                text-decoration: none;
+                // display: block;
+                opacity: 0.7;
+                padding-right: 50px;
+                transition: 0.25s;
+                &:hover {
+                    // letter-spacing: 2px;
+                    opacity: 1;
+                    transition: 0.5s;
+                }
+            }
+        }
+
+        @media (max-width: 700px) {
+            margin: 0 0 10px 0;
+            text-align: center;
+
+            li {
+                display: inline;
+                a {
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
+}

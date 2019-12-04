@@ -1,0 +1,62 @@
+{
+    "name": "strava-explorer",
+    "version": "1.0.0",
+    "description": "web page for strava connector",
+    "main": "index.js",
+    "scripts": {
+        "dev": "webpack-dev-server --config webpack.front-dev.config.js",
+        "build": "rm -rf dist && webpack --mode production --config webpack.front-prod.config.js"
+    },
+    "keywords": [
+        "Strava",
+        "Data Studio",
+        "Data Connector"
+    ],
+    "author": "Ralph Spandl - ralph@r42.ca",
+    "license": "ISC",
+    "dependencies": {
+        "babel-polyfill": "^6.26.0",
+        "extract-css": "^1.2.4",
+        "firebase": "^6.6.2"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.4",
+        "@babel/preset-env": "^7.7.4",
+        "babel-eslint": "^10.0.3",
+        "babel-loader": "^8.0.6",
+        "clean-webpack-plugin": "^2.0.2",
+        "copy-webpack-plugin": "^5.0.5",
+        "css-loader": "^2.1.1",
+        "eslint": "^5.16.0",
+        "eslint-config-airbnb-base": "^13.2.0",
+        "eslint-config-standard": "^12.0.0",
+        "eslint-friendly-formatter": "^4.0.1",
+        "eslint-loader": "^2.2.1",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-node": "^9.2.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1",
+        "fibers": "^4.0.2",
+        "file-loader": "^3.0.1",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^0.6.0",
+        "node-sass": "^4.13.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "pug": "^2.0.4",
+        "pug-loader": "^2.4.0",
+        "sass": "^1.23.7",
+        "sass-loader": "^8.0.0",
+        "style-loader": "^0.23.1",
+        "stylus": "^0.54.7",
+        "stylus-loader": "^3.0.2",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "url-loader": "^1.1.2",
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.10",
+        "webpack-dev-middleware": "^3.7.2",
+        "webpack-dev-server": "^3.9.0",
+        "webpack-hot-middleware": "^2.25.0",
+        "webpack-node-externals": "^1.7.2"
+    }
+}

@@ -1,0 +1,34 @@
+.showbox {
+    height: 750px;
+    background-image: url('/assets/images/showbox-bg.svg');
+    background-image: url('/assets/images/showbox-bg.svg'), linear-gradient(180deg, #495E64 0%, #1C2D30 100%); 
+    // linear-gradient(180deg, #495E64 0%, #1C2D30 100%)
+    background-position: center top;
+    background-repeat: no-repeat;
+    // background-color: ;
+
+    .content {
+        position: absolute;
+        top: 450px;
+        margin: 0 auto;
+        width: 100%;
+        h1 {            
+            text-align: center;
+        }
+
+        .r42 {
+            text-align: center;
+            margin-bottom: 75px;
+            img {
+                width: 70px;
+            }
+        }
+
+        p {
+            text-align: center;
+            span {
+                display: block;
+            }
+        }
+    }
+}
