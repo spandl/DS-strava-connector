@@ -1,20 +1,11 @@
 extends layout
 
 block title
-	title Strava Explorer
+	title Strava Explorer - A Free Connector for Google Data Studio
 
 block body
-	header 
-		a(target='_blank' href='https://r42.ca')
-			img(class='logo' src='/assets/images/logo-green.svg' alt='r42 communication')
-	.showbox
-		.content
-			.r42 
-				a(target='_blank' href='https://r42.ca')
-					img(class='main-logo' src='/assets/images/logo-green.svg' alt='r42 communication')
-			h1 Strava Explorer
-			p.slogan A Free Connector 
-				span for Google Data Studio
+	include includes/header.pug
+	+showbox('A Free Connector', 'for Google Data Studio')
 	.column
 		h2 Take control of your strava data
 		p Strava Explorer for Google Data Studio let’s you explore your Strava activity data weather you are using the pre-built report template or leverage your own Data Studio skills to create your custom views on your activities.
@@ -31,7 +22,7 @@ block body
 			h2 access your report
 			p Google Data Studio is free to use. But because you will be the owner of your own report, you will need a Google account. Of course you will also need to log into your Strava account.
 
-			p We will show you below how this works, but rest assured, the connector won’t store your Strava data. #[a(target='_blank' href='https://r42.ca/Data-Studio-Privacy-Policy') Refer to our privacy policy for more details.]
+			p We will show you below how this works, but rest assured, the connector won’t store your Strava data. #[a(href='/privacy-policy.html') Refer to our privacy policy for more details.]
 
 		.steps
 			.row 
@@ -67,21 +58,4 @@ block body
 					h3 Done.
 					p You are now ready to explore your activities and use Data Studio to extent the report.
 
-	footer
-		.copyright
-			| &copy; 2019 r42 communication Inc.
-		.social
-			a.ft(target='_blank' href='https://twitter.com/ralph_spandl')
-				img(src='/assets/images/twitter.svg' alt='Twitter')
-			a.ft(target='_blank' href='https://www.linkedin.com/in/spandl/')
-				img(src='/assets/images/linked-in.svg' alt='LinkedIn')
-		ul.links        
-			li
-				a.ft(target='_blank' href='https://r42.ca/about')
-					| about r42
-			li
-				a.ft(target='_blank' href='https://r42.ca/contact')
-					| contact
-			li
-				a.ft(target='_blank' href='https://r42.ca')
-					| home
+	include includes/footer.pug

@@ -1,7 +1,8 @@
 @import 'foundation/variables.scss';
 @import 'showbox.scss';
 @import 'body.scss'; 
-@import 'footer.scss'; 
+@import 'footer.scss';
+@import 'privacy.scss'; 
 
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,400i,700&display=swap');
 
@@ -74,9 +75,21 @@ h2 {
     font-size: 24px;
     line-height: 36px;
     color: $orange;
+    margin-top: 40px;
+}
+
+h3 {
+    margin: 20px 0 5px;
 }
 
 p {
     font-size: 18px;
-    line-height: 24px
+    line-height: 24px;
+    margin: 5px 0 15px;
+}
+
+p.intro {
+    font-size: 1.1em;
+    font-weight: 700;
+    line-height: 1.75em;
 }
