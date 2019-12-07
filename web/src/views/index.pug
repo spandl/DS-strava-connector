@@ -1,14 +1,14 @@
 extends layout
 
 block title
-	title Strava Explorer - A Free Connector for Google Data Studio
+	title Activity Explorer - A Free Connector for Google Data Studio
 
 block body
 	include includes/header.pug
 	+showbox('A Free Connector', 'for Google Data Studio')
 	.column
 		h2 Take control of your strava data
-		p Strava Explorer for Google Data Studio let’s you explore your Strava activity data weather you are using the pre-built report template or leverage your own Data Studio skills to create your custom views on your activities.
+		p Activity Explorer for Google Data Studio let’s you explore your Strava activity data weather you are using the pre-built report template or leverage your own Data Studio skills to create your custom views on your activities.
 
 		p The current version has over 40 metrics, dimensions or calculated fields available that help you to gain more insight of your actvities.
 
@@ -26,31 +26,31 @@ block body
 
 		.steps
 			.row 
-				.content Access the connector by clicking the link below.
-					.button 
-						a(href='https://datastudio.google.com/datasources/create?connectorId=AKfycbyWOEf16aZ8F3rephvvxkO1p0-U5yz-Dqt3Y44fE429t0v76Nu_djgAZJmkyt8piSWs4w') Get Strava Explorer
+				.content Access the connector by clicking the link below.					
+					a(target='_blank' href='https://datastudio.google.com/datasources/create?connectorId=AKfycbyWOEf16aZ8F3rephvvxkO1p0-U5yz-Dqt3Y44fE429t0v76Nu_djgAZJmkyt8piSWs4w') 
+						img(src='/assets/images/btn_strava_connectwith_orange.svg' alt='Connect with Strava')
 				.image
 					img(class='main-logo' src='/assets/images/step-1.png' alt='The Strava Explorer')
 			.row 
 				.content Click on “Authorise” to allow #[strong Data Studio] to use this connector and follow the steps.
 				.image
-					img(class='main-logo' src='/assets/images/step-2.png' alt='Strava Explorer - step 2')
+					img(class='main-logo' src='/assets/images/step-2.png' alt='Activity Explorer - step 2')
 			.row 
 				.content Click on “Authorise” to allow the connector to use your #[strong Strava] data.
 				.image
-					img(class='main-logo' src='/assets/images/step-3.png' alt='Strava Explorer - step 3')   
+					img(class='main-logo' src='/assets/images/step-3.png' alt='Activity Explorer - step 3')   
 			.row 
 				.content Click on “Connect”
 				.image
-					img(class='main-logo' src='/assets/images/step-4.png' alt='Strava Explorer - step 4')   
+					img(class='main-logo' src='/assets/images/step-4.png' alt='Activity Explorer - step 4')   
 			.row 
 				.content Turn on “Community Visualizations”.
 				.image
-					img(class='main-logo' src='/assets/images/step-5.png' alt='Strava Explorer - step 5')   
+					img(class='main-logo' src='/assets/images/step-5.png' alt='Activity Explorer - step 5')   
 			.row 
 				.content And finally create your report.
 				.image
-					img(class='main-logo' src='/assets/images/step-6.png' alt='Strava Explorer - step 6')
+					img(class='main-logo' src='/assets/images/step-6.png' alt='Activity Explorer - step 6')
 
 			.row
 				.done
