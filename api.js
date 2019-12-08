@@ -9,8 +9,16 @@ function getAuthType() {
 }
 
 function isAdminUser() {
-    var isAdmin = Boolean(scriptProps.getProperty('isAdminUser'))
-    return isAdmin
+    var scriptProps = PropertiesService.getScriptProperties()
+    try {
+        var isAdmin = Boolean(scriptProps.getProperty('isAdminUser'))
+        return isAdmin
+    } catch (e) {
+        console.log("isAdmin can't be read: " + e)
+    } finally {
+        // if isAdmin User inknown set to false
+        return false
+    }
 }
 
 function getConfig(request) {
@@ -23,8 +31,22 @@ function getConfig(request) {
 }
 
 function getSchema(request) {
-    var fields = getFields(request).build()
-    return { schema: fields }
+    try {
+        var fields = getFields(request).build()
+        return { schema: fields }
+    } catch(e) {
+        console.log('Get Schema failed: ' + e)
+        DataStudioApp.createCommunityConnector()
+            .newUserError()
+            .setDebugText(
+                'Error building the schema. Exception details: ' + e
+            )
+            .setText(
+                'There was an error building the database schema. Please drop us a note.'
+            )
+            .throwException()
+    }
+    
 }
 
 /**
@@ -76,10 +98,9 @@ function responseToRows(requestedFields, response) {
                 case 'start_date_local':
                     return row.push(parseTimestamp(activity[field.getId()]))
                 // force these fields to be a string.
-                case 'id':
                 case 'elapsed_time':
                 case 'moving_time':
-                    return row.push('' + activity[field.getId()])
+                    return row.push(String(activity[field.getId()]))
                 default:
                     return row.push(activity[field.getId()])
             }
@@ -106,7 +127,21 @@ function formatQueryParams(queryParams) {
 }
 
 function urlFetchOptions() {
-    var token = getOAuthService().getAccessToken()
+
+    try {
+        var token = getOAuthService().getAccessToken()
+    } catch(e) {
+        console.log('Failed to access the token: ' + e)
+        DataStudioApp.createCommunityConnector()
+            .newUserError()
+            .setDebugText(
+                'Failed to access the token. Exception details: ' + e
+            )
+            .setText(
+                'There was an error with the authentication. Please try to authorise the connector with your Strava credentials again.'
+            )
+            .throwException()
+    }
 
     return {
         headers: {
@@ -134,7 +169,7 @@ function hashString(str) {
  * the average request.
  */
 function getAllDataFromAPI(request, requestedFields) {
-    var configParams = request.configParams || {}
+
     var cache = CacheService.getUserCache()
     var queryParams = {}
 
@@ -162,7 +197,10 @@ function getAllDataFromAPI(request, requestedFields) {
             return field.getId()
         })
         .join('|')
+
+    var count = 0
     while (moreResults) {
+        count++
         queryParams['page'] = page
         var formattedParams = formatQueryParams(queryParams)
         var url = [
@@ -174,36 +212,56 @@ function getAllDataFromAPI(request, requestedFields) {
         var cacheKey = formattedParams + cacheKeyBase
         cacheKey = hashString(cacheKey)
         page++
+        var cacheValue
 
-        var cacheValue = cache.get(cacheKey)
+        try {
+            cacheValue = cache.get(cacheKey)
+        } catch (e) {
+            console.log('cacheKey: ' + e.message)
+        } finally {
+            cacheValue = null
+        }
+
         // cache.get returns null on cache miss.
         if (cacheValue == null) {
-            var apiResponse = JSON.parse(UrlFetchApp.fetch(url, options))
+            try {
+                var apiResponse = JSON.parse(UrlFetchApp.fetch(url, options))
+            } catch (e) {
+                console.log('apiResponse: ' + e.message)
+                DataStudioApp.createCommunityConnector()
+                    .newUserError()
+                    .setDebugText(
+                        'API Response failed. Exception details: ' + e
+                    )
+                    .setText(
+                        'Uuuh... there was an error communicating with Strava. Try again later, or drop us a note if this error persists.'
+                    )
+                    .throwException()
+            }
+
             var filteredResponse = apiResponse.map(function(activity) {
                 var filteredActivity = keysToKeep.reduce(function(obj, key) {
                     obj[key] = activity[key]
+
                     return obj
                 }, {})
                 return filteredActivity
             })
+
             cacheValue = JSON.stringify({ value: filteredResponse })
-            cache.put(cacheKey, cacheValue)
+
+            try {
+                cache.put(cacheKey, cacheValue)
+            } catch (e) {
+                console.log('cacheValue: ' + e.message)
+            } finally {
+                cache.put(cacheKey, null)
+                console.log('cache too big has been set to null')
+            }
         }
-        var rows = responseToRows(
-            requestedFields,
-            JSON.parse(cacheValue).value.filter(function(activity) {
-                if (
-                    configParams.activityType &&
-                    configParams.activityType != 'All'
-                ) {
-                    return activity['type'].match(
-                        new RegExp(request.configParams.activityType)
-                    )
-                } else {
-                    return true
-                }
-            })
-        )
+
+        var rows = responseToRows(requestedFields, JSON.parse(cacheValue).value)
+
         if (rows.length === 0) {
             moreResults = false
         }
@@ -218,8 +276,24 @@ function getData(request) {
             return field.name
         })
     )
+
+    try {
+        var requestedData = getAllDataFromAPI(request, requestedFields)
+    } catch (e) {
+        console.log('Get Data failed: ' + e)
+        DataStudioApp.createCommunityConnector()
+            .newUserError()
+            .setDebugText(
+                'Error fetching data from API. Exception details: ' + e
+            )
+            .setText(
+                'There was an error communicating with Strava. Try again later, or file an issue if this error persists.'
+            )
+            .throwException()
+    }
+
     return {
         schema: requestedFields.build(),
-        rows: getAllDataFromAPI(request, requestedFields)
+        rows: requestedData
     }
 }

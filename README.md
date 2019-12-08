@@ -33,6 +33,7 @@ https://datastudio.google.com/datasources/create?connectorId=AKfycbxKWsbE35PnEH5
 clasp setting scriptId 1NDeMDaMum9cGiC9jEoDrN1eHgQkWYD2DKMnDbaFFx0JAr7nqqIXpUf1H
 
 BETA 2
+https://datastudio.google.com/datasources/create?connectorId=AKfycby-tsjxkfq-LlCc1pIwOO6EDlF3PQ35NT3NN_vFYbk6
 https://datastudio.google.com/reporting/e7ac5d1b-2bfe-4f39-b283-332a048d6342
 
 

@@ -1,4 +1,4 @@
-function getFields(request) {
+function getFields() {
     var cc = DataStudioApp.createCommunityConnector()
     var fields = cc.getFields()
     var types = cc.FieldType
