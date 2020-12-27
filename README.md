@@ -1,15 +1,20 @@
 # DS-strava-connector
 There are two apps scripts connected to this connector
 
+**SWITCH TO DEV**'
+clasp setting scriptId 1NDeMDaMum9cGiC9jEoDrN1eHgQkWYD2DKMnDbaFFx0JAr7nqqIXpUf1H
+
 ## PROD
+
+**SWITCH TO PROD**'
+clasp setting scriptId 1aqxtryVcb7agOvIljbGxYztNp3naNi7iVxuGn-_UOOypTrjCn1U4eymw
 
 ### REPORTS
 Production
-https://datastudio.google.com/reporting/4dcec71d-af60-4dc8-8b63-e299b0d411f8
+https://datastudio.google.com/reporting/be67efcb-c832-4a66-b24c-db38ede91d89
 
 ### Script ID
 1aqxtryVcb7agOvIljbGxYztNp3naNi7iVxuGn-_UOOypTrjCn1U4eymw
-clasp setting scriptId 1aqxtryVcb7agOvIljbGxYztNp3naNi7iVxuGn-_UOOypTrjCn1U4eymw
 
 **Production Deployment ID**
 AKfycbyWOEf16aZ8F3rephvvxkO1p0-U5yz-Dqt3Y44fE429t0v76Nu_djgAZJmkyt8piSWs4w
@@ -25,14 +30,14 @@ https://datastudio.google.com/datasources/create?connectorId=AKfycbym3VoAciIpzG_
 https://datastudio.google.com/datasources/create?connectorId=AKfycbxKWsbE35PnEH5kq9yGNepntugQZxq5mmVUC9b3j95x
 
 
+
 ## DEV
 ### Script ID
 1NDeMDaMum9cGiC9jEoDrN1eHgQkWYD2DKMnDbaFFx0JAr7nqqIXpUf1H
 
-**CLASP COMMAND**'
-clasp setting scriptId 1NDeMDaMum9cGiC9jEoDrN1eHgQkWYD2DKMnDbaFFx0JAr7nqqIXpUf1H
 
-BETA 2
+
+### HEAD Connector ID DEV
 https://datastudio.google.com/datasources/create?connectorId=AKfycby-tsjxkfq-LlCc1pIwOO6EDlF3PQ35NT3NN_vFYbk6
 https://datastudio.google.com/reporting/e7ac5d1b-2bfe-4f39-b283-332a048d6342
 

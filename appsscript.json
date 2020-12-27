@@ -17,13 +17,13 @@
     "addonUrl": "https://activity-explorer.r42.ca/",
     "supportUrl": "https://github.com/spandl/DS-strava-connector/issues",
     "description": "Connect your personal Strava activity data to Data Studio and get more insight about your activities. Powered by Strava.",
-    "shortDescription": "Use your personal Strava activity data in Data Studio. Powered by Strava.",
+    "shortDescription": "Use your personal Strava activity data in Data Studio. Powered by Strava. [Beta 3.3]",
     "privacyPolicyUrl": "https://r42.ca/Data-Studio-Privacy-Policy",
     "authType": ["OAUTH2"],
     "feeType": ["FREE"],
     "sources": ["STRAVA"],
     "templates": {
-      "default": "4dcec71d-af60-4dc8-8b63-e299b0d411f8"
+      "default": "be67efcb-c832-4a66-b24c-db38ede91d89"
     }
   },
   "urlFetchWhitelist": [

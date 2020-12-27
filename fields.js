@@ -1,44 +1,44 @@
 function getFields() {
-    var cc = DataStudioApp.createCommunityConnector()
-    var fields = cc.getFields()
-    var types = cc.FieldType
-    var aggregations = cc.AggregationType
+    var cc = DataStudioApp.createCommunityConnector();
+    var fields = cc.getFields();
+    var types = cc.FieldType;
+    var aggregations = cc.AggregationType;
 
     // Base fields: include always
     fields
         .newDimension()
         .setId('id')
         .setName('ID')
-        .setType(types.TEXT)
-        .setDescription('The unique identifier of the activity')
+        .setType(types.NUMBER)
+        .setDescription('The unique identifier of the activity');
 
     fields
         .newDimension()
         .setId('private')
         .setName('is Private')
         .setType(types.BOOLEAN)
-        .setDescription('Activity markes as private')
+        .setDescription('Activity markes as private');
 
     fields
         .newDimension()
         .setId('name')
         .setName('Name')
         .setType(types.TEXT)
-        .setDescription('The name of the activity.')
+        .setDescription('The name of the activity.');
 
     fields
         .newDimension()
         .setId('type')
         .setName('Activity type')
         .setType(types.TEXT)
-        .setDescription('The type of the activity.')
+        .setDescription('The type of the activity.');
 
     fields
         .newDimension()
         .setId('start_date_local')
         .setName('Start Time')
         .setType(types.YEAR_MONTH_DAY_HOUR)
-        .setDescription('The local time at which the activity was started.')
+        .setDescription('The local time at which the activity was started.');
 
     fields
         .newDimension()
@@ -46,28 +46,28 @@ function getFields() {
         .setName('Month')
         .setType(types.MONTH)
         .setFormula('SUBSTR($start_date_local, 5, 2)')
-        .setDescription('The month in which the activity was started.')
+        .setDescription('The month in which the activity was started.');
 
     fields
         .newDimension()
         .setId('start_latlng')
         .setName('Start Location')
         .setType(types.LATITUDE_LONGITUDE)
-        .setDescription('The starting latitude and longitude')
+        .setDescription('The starting latitude and longitude');
 
     fields
         .newDimension()
         .setId('end_latlng')
         .setName('End Location')
         .setType(types.LATITUDE_LONGITUDE)
-        .setDescription('The ending latitude and longitude')
+        .setDescription('The ending latitude and longitude');
 
     fields
         .newDimension()
         .setId('location_country')
         .setName('Country')
         .setType(types.COUNTRY)
-        .setDescription('The country the activity took place in.')
+        .setDescription('The country the activity took place in.');
 
     fields
         .newMetric()
@@ -75,14 +75,14 @@ function getFields() {
         .setName('Distance (m)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.SUM)
-        .setDescription("The activity's distance, in meters.")
+        .setDescription("The activity's distance, in meters.");
 
     fields
         .newMetric()
         .setId('moving_time')
         .setName('Moving Time')
         .setType(types.DURATION)
-        .setDescription("The activity's moving time, in seconds.")
+        .setDescription("The activity's moving time, in seconds.");
 
     fields
         .newMetric()
@@ -90,7 +90,7 @@ function getFields() {
         .setName('Elevation Gain (m)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.SUM)
-        .setDescription("The activity's total elevation gain, in meters.")
+        .setDescription("The activity's total elevation gain, in meters.");
 
     fields
         .newMetric()
@@ -98,7 +98,7 @@ function getFields() {
         .setName('Cadence')
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
-        .setDescription('The average cadence during the activity.')
+        .setDescription('The average cadence during the activity.');
 
     fields
         .newMetric()
@@ -106,7 +106,7 @@ function getFields() {
         .setName('Heartrate')
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
-        .setDescription('Average heart rate for the activity.')
+        .setDescription('Average heart rate for the activity.');
 
     // SOCIAL and other secondary fields
     fields
@@ -114,21 +114,21 @@ function getFields() {
         .setId('commute')
         .setName('Is Commute')
         .setType(types.BOOLEAN)
-        .setDescription('Whether this activity is a commute')
+        .setDescription('Whether this activity is a commute');
 
     fields
         .newDimension()
         .setId('manual')
         .setName('Manual Entry')
         .setType(types.BOOLEAN)
-        .setDescription('Whether this activity was created manually')
+        .setDescription('Whether this activity was created manually');
 
     fields
         .newMetric()
         .setId('flagged')
         .setName('Flagged')
         .setType(types.BOOLEAN)
-        .setDescription('Ride was flagged')
+        .setDescription('Ride was flagged');
 
     fields
         .newMetric()
@@ -136,7 +136,7 @@ function getFields() {
         .setName('Elapsed Time (s)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.SUM)
-        .setDescription("The activity's elapsed time, in seconds.")
+        .setDescription("The activity's elapsed time, in seconds.");
 
     fields
         .newMetric()
@@ -144,7 +144,7 @@ function getFields() {
         .setName('Achievement Count')
         .setType(types.NUMBER)
         .setAggregation(aggregations.SUM)
-        .setDescription('Number of achievements per activity')
+        .setDescription('Number of achievements per activity');
 
     fields
         .newMetric()
@@ -152,7 +152,7 @@ function getFields() {
         .setName('Kudos')
         .setType(types.NUMBER)
         .setAggregation(aggregations.SUM)
-        .setDescription('Number of kudos per activity')
+        .setDescription('Number of kudos per activity');
 
     fields
         .newMetric()
@@ -160,7 +160,7 @@ function getFields() {
         .setName('Comments Count')
         .setType(types.NUMBER)
         .setAggregation(aggregations.SUM)
-        .setDescription('Number of comments per activity')
+        .setDescription('Number of comments per activity');
 
     fields
         .newMetric()
@@ -168,7 +168,7 @@ function getFields() {
         .setName('Athlete Count')
         .setAggregation(aggregations.AVG)
         .setType(types.NUMBER)
-        .setDescription('Number of athelete parcticipating in this activity')
+        .setDescription('Number of athelete parcticipating in this activity');
 
     fields
         .newMetric()
@@ -176,7 +176,7 @@ function getFields() {
         .setName('Photo Count')
         .setType(types.NUMBER)
         .setAggregation(aggregations.SUM)
-        .setDescription('The number of Instagram photos for this activity')
+        .setDescription('The number of Instagram photos for this activity');
 
     fields
         .newMetric()
@@ -184,9 +184,7 @@ function getFields() {
         .setName('Total Photo Count')
         .setAggregation(aggregations.SUM)
         .setType(types.NUMBER)
-        .setDescription(
-            'The number of Instagram and Strava photos for this activity'
-        )
+        .setDescription('The number of Instagram and Strava photos for this activity');
 
     fields
         .newMetric()
@@ -194,7 +192,7 @@ function getFields() {
         .setName('Watts / AVG')
         .setAggregation(aggregations.AVG)
         .setType(types.NUMBER)
-        .setDescription('Average wattage for this activity')
+        .setDescription('Average wattage for this activity');
 
     fields
         .newMetric()
@@ -202,7 +200,7 @@ function getFields() {
         .setName('Watts / MAX ')
         .setType(types.NUMBER)
         .setAggregation(aggregations.MAX)
-        .setDescription('Max wattage for this activity')
+        .setDescription('Max wattage for this activity');
 
     fields
         .newMetric()
@@ -210,16 +208,14 @@ function getFields() {
         .setName('Watts / AVG (weighted)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
-        .setDescription('Average weighted wattage for this activity')
+        .setDescription('Average weighted wattage for this activity');
 
     fields
         .newDimension()
         .setId('device_watts')
         .setName('Watts / AVG (weighted)')
         .setType(types.BOOLEAN)
-        .setDescription(
-            'Whether the wattage was reported by a dedicated recording device'
-        )
+        .setDescription('Whether the wattage was reported by a dedicated recording device');
 
     fields
         .newMetric()
@@ -227,7 +223,7 @@ function getFields() {
         .setName('Highest elevation (m)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.MAX)
-        .setDescription("The activity's highest elevation, in meters")
+        .setDescription("The activity's highest elevation, in meters");
 
     fields
         .newMetric()
@@ -235,7 +231,7 @@ function getFields() {
         .setName('Lowest elevation (m)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.MIN)
-        .setDescription("The activity's lowest elevation, in meters")
+        .setDescription("The activity's lowest elevation, in meters");
 
     fields
         .newMetric()
@@ -243,14 +239,21 @@ function getFields() {
         .setName('Suffer Score')
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
-        .setDescription('Strava Suffer Score')
+        .setDescription('Strava Suffer Score');
 
     fields
         .newDimension()
         .setId('device_name')
         .setName('Device Name')
         .setType(types.NUMBER)
-        .setDescription('Device which recorded the activity')
+        .setDescription('Device which recorded the activity');
+
+    fields
+        .newDimension()
+        .setId('gear_id')
+        .setName('Gear ID')
+        .setType(types.TEXT)
+        .setDescription('ID of used equipment for the activity');
 
     fields
         .newMetric()
@@ -258,7 +261,7 @@ function getFields() {
         .setName('Personal Record Count')
         .setType(types.NUMBER)
         .setAggregation(aggregations.SUM)
-        .setDescription('Personal Record Count for the activity')
+        .setDescription('Personal Record Count for the activity');
 
     fields
         .newMetric()
@@ -266,9 +269,7 @@ function getFields() {
         .setName('Calories')
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
-        .setDescription(
-            'The number of kilocalories consumed during this activity'
-        )
+        .setDescription('The number of kilocalories consumed during this activity');
 
     fields
         .newMetric()
@@ -276,9 +277,7 @@ function getFields() {
         .setName('Average Speed (m/s)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
-        .setDescription(
-            'The average speed across selected activities, in meters per second'
-        )
+        .setDescription('The average speed across selected activities, in meters per second');
 
     fields
         .newMetric()
@@ -286,7 +285,7 @@ function getFields() {
         .setName('Max Speed (m/s)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.MAX)
-        .setDescription("The activity's max speed, in meters per second")
+        .setDescription("The activity's max speed, in meters per second");
 
     //** Additional values in METRIC units */
 
@@ -298,7 +297,7 @@ function getFields() {
         .setFormula('$distance / 1000')
         .setAggregation(aggregations.SUM)
         .setDescription("The activity's distance, in kilometer.")
-        .setGroup('Metric Values')
+        .setGroup('Metric Values');
 
     fields
         .newMetric()
@@ -307,10 +306,8 @@ function getFields() {
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
         .setFormula('$average_speed / 1000 * 3600')
-        .setDescription(
-            'The average speed across selected activities, in kilometers per hours'
-        )
-        .setGroup('Metric Values')
+        .setDescription('The average speed across selected activities, in kilometers per hours')
+        .setGroup('Metric Values');
 
     fields
         .newMetric()
@@ -319,7 +316,7 @@ function getFields() {
         .setType(types.NUMBER)
         .setAggregation(aggregations.MAX)
         .setFormula('$max_speed / 1000 * 3600')
-        .setDescription("The activity's max speed, in km/h")
+        .setDescription("The activity's max speed, in km/h");
 
     fields
         .newMetric()
@@ -327,9 +324,7 @@ function getFields() {
         .setName('Temperature (C)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
-        .setDescription(
-            'The average temperature during the activity, in Celsius.'
-        )
+        .setDescription('The average temperature during the activity, in Celsius.');
 
     //** Additional values in IMPERIAL units */
     fields
@@ -340,7 +335,7 @@ function getFields() {
         .setAggregation(aggregations.SUM)
         .setDescription("The activity's distance, in miles.")
         .setFormula('$distance / 1609.34')
-        .setGroup('Imperial Values')
+        .setGroup('Imperial Values');
 
     fields
         .newMetric()
@@ -350,7 +345,7 @@ function getFields() {
         .setAggregation(aggregations.SUM)
         .setDescription("The activity's total elevation gain, in feet.")
         .setFormula('$total_elevation_gain * 3.28084')
-        .setGroup('Imperial Values')
+        .setGroup('Imperial Values');
 
     fields
         .newMetric()
@@ -359,7 +354,7 @@ function getFields() {
         .setType(types.NUMBER)
         .setAggregation(aggregations.MAX)
         .setDescription("The activity's max speed, in miles per hour")
-        .setFormula('$max_speed * 2.23694')
+        .setFormula('$max_speed * 2.23694');
 
     fields
         .newMetric()
@@ -368,9 +363,7 @@ function getFields() {
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
         .setFormula('$distance / CAST($moving_time AS NUMBER) * 2.23694')
-        .setDescription(
-            'The average speed across selected activities, in miles per hour'
-        )
+        .setDescription('The average speed across selected activities, in miles per hour');
 
     fields
         .newMetric()
@@ -378,10 +371,8 @@ function getFields() {
         .setName('Temperature (F)')
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
-        .setDescription(
-            'The average temperature during the activity, in Fahrenheit.'
-        )
-        .setFormula('$average_temp * 9 / 5 + 32')
+        .setDescription('The average temperature during the activity, in Fahrenheit.')
+        .setFormula('$average_temp * 9 / 5 + 32');
 
     //** Additional values for PACE */
     fields
@@ -391,7 +382,7 @@ function getFields() {
         .setType(types.NUMBER)
         .setAggregation(aggregations.MAX)
         .setFormula('$1000 / 60 / max_speed')
-        .setDescription("The activity's max speed, minutes per kilometer")
+        .setDescription("The activity's max speed, minutes per kilometer");
 
     fields
         .newMetric()
@@ -400,7 +391,7 @@ function getFields() {
         .setType(types.NUMBER)
         .setAggregation(aggregations.AVG)
         .setFormula('$1000 / 60 / average_speed')
-        .setDescription("The activity's average speed, minutes per kilometer")
+        .setDescription("The activity's average speed, minutes per kilometer");
 
     fields
         .newDimension()
@@ -409,7 +400,7 @@ function getFields() {
         .setType(types.DURATION)
         // There are 1609.34 meters in a mile.
         .setFormula('CAST($moving_time AS NUMBER) / $distance * 1609.34')
-        .setDescription('1 mile pace.')
+        .setDescription('1 mile pace.');
 
     fields
         .newDimension()
@@ -417,7 +408,7 @@ function getFields() {
         .setName('Pace - 5k')
         .setType(types.DURATION)
         .setFormula('CAST($moving_time AS NUMBER) / $distance * 5000')
-        .setDescription('5 kilometer pace.')
+        .setDescription('5 kilometer pace.');
 
     fields
         .newDimension()
@@ -425,7 +416,7 @@ function getFields() {
         .setName('Pace - 10k')
         .setType(types.DURATION)
         .setFormula('CAST($moving_time AS NUMBER) / $distance * 10000')
-        .setDescription('10 kilometer pace.')
+        .setDescription('10 kilometer pace.');
 
     fields
         .newDimension()
@@ -433,7 +424,7 @@ function getFields() {
         .setName('Pace - Half Marathon')
         .setType(types.DURATION)
         .setFormula('CAST($moving_time AS NUMBER) / $distance * 21097.5')
-        .setDescription('half marathon pace.')
+        .setDescription('half marathon pace.');
 
     fields
         .newDimension()
@@ -441,7 +432,7 @@ function getFields() {
         .setName('Pace - Marathon')
         .setType(types.DURATION)
         .setFormula('CAST($moving_time AS NUMBER) / $distance * 42195')
-        .setDescription('marathon pace')
+        .setDescription('marathon pace');
 
-    return fields
+    return fields;
 }

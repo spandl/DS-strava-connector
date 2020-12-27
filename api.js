@@ -1,3 +1,7 @@
+/* 
+* DO NOT CHANGE THE SCRIPTS IN THE APP SCRIPT ENVIRONMENT
+* SOURCE CODE IS MANAGED IN VS and version controlled in Github */
+
 var RESULTS_PER_PAGE = 200
 var STRAVA_BASE_URL = 'https://www.strava.com/api/v3'
 var version = '1.0'
