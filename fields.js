@@ -265,9 +265,18 @@ function getFields() {
 
     fields
         .newMetric()
+        .setId('kilojoules')
+        .setName('Kilojoules')
+        .setType(types.NUMBER)
+        .setAggregation(aggregations.AVG)
+        .setDescription('The number of kilojoules consumed during this activity');
+
+    fields
+        .newMetric()
         .setId('calories')
         .setName('Calories')
         .setType(types.NUMBER)
+        .setFormula('$kilojoules * 0.239006')
         .setAggregation(aggregations.AVG)
         .setDescription('The number of kilocalories consumed during this activity');
 

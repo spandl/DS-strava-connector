@@ -72,7 +72,9 @@ commute
 * device_name
 * pr_count
 * total_photo_count
-* calories
+* kilojoules
+* calories (kilojoules * 0.239006)
+    .setFormula('$kilojoules * 0.239006');
 * commute
 * manual
 
